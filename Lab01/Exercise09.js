@@ -12,16 +12,16 @@ while(n <= 6 || isNaN(n)) {
     n = prompt(STR);
 }
 
-const sum = (n) => {
-    let sum = 0;
+const product = (n) => {
+    let product = 1;
     for(let i = 1; i <= n; i++) {
-        sum += 1/(i*(i+1));
+        product *= i;
     }
-    return sum;
+    return product;
 };
 
 // Invoke the function 
-let result = sum(n);
+let result = product(n);
 if(result !== undefined) {
     console.log("The result:",result);
 }
