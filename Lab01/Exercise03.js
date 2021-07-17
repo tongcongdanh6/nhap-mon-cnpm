@@ -3,18 +3,18 @@
 let prompt = require("prompt-sync")();
 
 console.clear();
-let n = prompt("Type the n value with 3 < n < 50: ");
+let n = prompt("Type the n value with n >= 7: ");
 
 // Validate data
-while(n <= 3 || n >= 50 || isNaN(n)) {
+while(n < 7 || isNaN(n)) {
     console.log("Invalid value for n");
-    n = prompt("Type the n value with 3 < n < 50: ");
+    n = prompt("Type the n value with n >= 7: ");
 }
 
 const sum = (n) => {
     let sum = 0;
     for(let i = 1; i <= n; i++) {
-        sum += i;
+        sum += 1/i;
     }
     return sum;
 };
