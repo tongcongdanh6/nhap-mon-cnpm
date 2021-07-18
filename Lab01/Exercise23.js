@@ -18,27 +18,27 @@ for(let i = 0; i < n; i++) {
     arr[i] = parseInt(prompt(`Type the value of element ${i} = `));
 }
 
-let largestSumSubArray = (arr) => {
-    let currentMax = arr[0];
-    let globalMax = arr[0];
+let smallestSumSubArray = (arr) => {
+    let currentMin = arr[0];
+    let globalMin = arr[0];
     let start_index = 0;
     let end_index = 0;
 
     for(let i = 1; i < arr.length; i++) {
-        if(currentMax < 0) {
-            currentMax = arr[i];
+        if(currentMin >= 0) {
+            currentMin = arr[i];
             start_index = i;
         }
         else {
-            currentMax += arr[i];
+            currentMin += arr[i];
         }
 
-        if(globalMax < currentMax) {
-            globalMax = currentMax;
+        if(globalMin > currentMin) {
+            globalMin = currentMin;
             end_index = i;
         }
     }
-    return {globalMax, start_index, end_index};
+    return {globalMin, start_index, end_index};
 }
 
 function printArray(arr,start,end) {
@@ -50,5 +50,5 @@ function printArray(arr,start,end) {
 }
 
 console.log("Main array: ",printArray(arr,0,arr.length-1));
-console.log("Largest sum sub array: ",printArray(arr,largestSumSubArray(arr)["start_index"],largestSumSubArray(arr)["end_index"]));
-console.log("Sum = ",largestSumSubArray(arr)["globalMax"]);
+console.log("Smallest sum sub array: ",printArray(arr,smallestSumSubArray(arr)["start_index"],smallestSumSubArray(arr)["end_index"]));
+console.log("Sum = ",smallestSumSubArray(arr)["globalMin"]);
