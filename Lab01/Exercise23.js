@@ -38,17 +38,12 @@ let smallestSumSubArray = (arr) => {
             end_index = i;
         }
     }
-    return {globalMin, start_index, end_index};
+
+    let subArray = arr.slice(start_index, end_index + 1);
+
+    return {globalMin, subArray};
 }
 
-function printArray(arr,start,end) {
-    let str = "";
-    for(let i = start; i <= end; i++) {
-        str += arr[i] + " ";
-    }
-    return str;
-}
-
-console.log("Main array: ",printArray(arr,0,arr.length-1));
-console.log("Smallest sum sub array: ",printArray(arr,smallestSumSubArray(arr)["start_index"],smallestSumSubArray(arr)["end_index"]));
-console.log("Sum = ",smallestSumSubArray(arr)["globalMin"]);
+console.log("Main array:",arr);
+console.log("Smallest sum sub array: ",smallestSumSubArray(arr)["subArray"]);
+console.log("Smallest Sum = ",smallestSumSubArray(arr)["globalMin"]);

@@ -38,17 +38,12 @@ let largestSumSubArray = (arr) => {
             end_index = i;
         }
     }
-    return {globalMax, start_index, end_index};
+
+    let subArray = arr.slice(start_index, end_index + 1);
+
+    return {globalMax, subArray};
 }
 
-function printArray(arr,start,end) {
-    let str = "";
-    for(let i = start; i <= end; i++) {
-        str += arr[i] + " ";
-    }
-    return str;
-}
-
-console.log("Main array: ",printArray(arr,0,arr.length-1));
-console.log("Largest sum sub array: ",printArray(arr,largestSumSubArray(arr)["start_index"],largestSumSubArray(arr)["end_index"]));
-console.log("Sum = ",largestSumSubArray(arr)["globalMax"]);
+console.log("Main array:",arr);
+console.log("Largest sum sub array:",largestSumSubArray(arr)["subArray"]);
+console.log("Largest Sum = ",largestSumSubArray(arr)["globalMax"]);

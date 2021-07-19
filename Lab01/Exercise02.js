@@ -1,14 +1,15 @@
 'use strict'
 
 let prompt = require("prompt-sync")();
+const STR = "Type the n value with 5 <= n <= 20: ";
 
 console.clear();
-let n = prompt("Type the n value with 5 <= n <= 20: ");
+let n = prompt(STR);
 
 // Validate data
 while(n < 5 || n > 20 || isNaN(n)) {
     console.log("Invalid value for n");
-    n = prompt("Type the n value with 5 <= n <= 20: ");
+    n = prompt(STR);
 }
 
 const sum = (n) => {

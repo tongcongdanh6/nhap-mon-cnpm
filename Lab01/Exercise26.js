@@ -18,16 +18,7 @@ for(let i = 0; i < n; i++) {
     arr[i] = parseInt(prompt(`Type the value of element ${i} = `));
 }
 
-let result = [];
-arr.forEach((e) => {
-    let counter = 0;
-    arr.forEach((e2) => {
-        if(e2 == e) counter++;
-    });
+let duplicateElement = (arr) => arr.filter((value,index) => arr.indexOf(value) != index);
+let uniqueElement = arr.filter((e) => !duplicateElement(arr).includes(e));
 
-    if(counter == 1) {
-        result.push(e);
-    }
-});
-
-console.log("The elements in array display only 1 times:",result.join(" "));
+console.log("The elements in array display only 1 times:",uniqueElement.join(" "));
