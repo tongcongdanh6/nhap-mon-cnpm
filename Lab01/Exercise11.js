@@ -1,16 +1,9 @@
 'use strict'
 
 let prompt = require("prompt-sync")();
-const STR = "Type the n value with n >= 0: ";
+const STR = "n must be n >= 0";
 
 console.clear();
-let n = prompt(STR);
-
-// Validate data
-while(n < 0 || isNaN(n)) {
-    console.log("Invalid value for n");
-    n = prompt(STR);
-}
 
 const product = (n) => {
     if(n == 0) {
@@ -25,16 +18,29 @@ const product = (n) => {
     }
 }
 
-const sum = (n) => {
+const sum = function(n) {
     let sum = 0;
     for(let i = 0; i <= n; i++) {
         sum += product(i);
     }
     return sum;
-};
+}
 
-// Invoke the function 
-let result = sum(n);
-if(result !== undefined) {
-    console.log("The result:",result);
+const main = function(n) {
+    try {
+        if(n < 0 || isNaN(n)) {
+            throw {"message":STR};
+        }
+        else {
+            return sum(n);
+        }        
+    } catch(e) {
+        console.log("Error:",e.message);
+    }
+}
+
+// Invoke the function
+let n = 5;
+if(main(n) !== undefined) {
+    console.log("The result:",main(n));
 }

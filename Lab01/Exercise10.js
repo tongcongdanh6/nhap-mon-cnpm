@@ -1,21 +1,10 @@
 'use strict'
 
-let prompt = require("prompt-sync")();
-const STR = "Type the x value: ";
-const STR2 = "Type the n value: ";
+const STR = "Invalid parameter";
 
 console.clear();
-let x = prompt(STR);
-let n = prompt(STR2);
 
-// Validate data
-while(isNaN(n) || isNaN(x)) {
-    console.log("Invalid value for n or x! Please input again!");
-    x = prompt(STR);
-    n = prompt(STR2);
-}
-
-const power = (x,n) => {
+const power = function(x,n) {
     let tmp = n;
     let p = x;
     for(let i = 2; i <= Math.abs(tmp); i++) {
@@ -29,10 +18,40 @@ const power = (x,n) => {
         // If exponent is negative (-)
         return 1/p;
     }
-};
+}
 
-// Invoke the function 
-let result = power(x,n);
-if(result !== undefined) {
-    console.log(`The result T(${x},${n}) = `,result);
+const main = function(x,n) {
+    try {
+        if(isNaN(x) || isNaN(n)) {
+            throw {"message":STR};
+        }
+        else {
+            return power(x,n);
+        }        
+    } catch(e) {
+        console.log("Error:",e.message);
+    }
+}
+
+// Invoke the function
+let n = 5;
+let x = 4;
+if(main(x,n) !== undefined) {
+    console.log("The result:",main(x,n));
+}
+
+module.exports = function power(x,n) {
+    let tmp = n;
+    let p = x;
+    for(let i = 2; i <= Math.abs(tmp); i++) {
+        p *= x;
+    }
+    // If exponent is positive (+)
+    if(n >= 0) {
+        return p;
+    }
+    else {
+        // If exponent is negative (-)
+        return 1/p;
+    }
 }
