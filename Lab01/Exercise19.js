@@ -1,19 +1,8 @@
 'use strict'
 
-let prompt = require("prompt-sync")();
-const STR1 = "Type the n value with n >= 0: ";
-const STR2 = "Type the x value: ";
+const STR = "Invalid parameter";
 
 console.clear();
-let n = prompt(STR1);
-let x = prompt(STR2);
-
-// Validate data
-while(n < 0 || isNaN(n) || isNaN(x)) {
-    console.log("Invalid value for n or x! Please input again!");
-    n = prompt(STR1);
-    x = prompt(STR2);
-}
 
 const factorial = (n) => {
     if(n == 0) {
@@ -41,8 +30,22 @@ const sum = (x,n) => {
     }
 }
 
-// Invoke the function 
-let result = sum(x,n);
-if(result !== undefined) {
-    console.log("The result:",result);
+const main = function(x,n) {
+    try {
+        if(n < 0 || isNaN(n) || isNaN(x)) {
+            throw {"message":STR};
+        }
+        else {
+            return sum(x,n);
+        }        
+    } catch(e) {
+        console.log("Error:",e.message);
+    }
+}
+
+// Invoke the function
+let n = 5;
+let x = 4;
+if(main(x,n) !== undefined) {
+    console.log("The result:",main(x,n));
 }
