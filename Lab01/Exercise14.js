@@ -1,30 +1,49 @@
 'use strict'
 
-let prompt = require("prompt-sync")();
-const STR = "Type the x value: ";
-const STR2 = "Type the n value with n > 0: ";
+const STR = "Invalid parameter";
 
 console.clear();
-let x = prompt(STR);
-let n = prompt(STR2);
 
-// Validate data
-while(n < 0 || isNaN(n) || isNaN(x)) {
-    console.log("Invalid value for n or x! Please input again!");
-    x = prompt(STR);
-    n = prompt(STR2);
+const power = function(x,n) {
+    let tmp = n;
+    let p = x;
+    for(let i = 2; i <= Math.abs(tmp); i++) {
+        p *= x;
+    }
+    // If exponent is positive (+)
+    if(n >= 0) {
+        return p;
+    }
+    else {
+        // If exponent is negative (-)
+        return 1/p;
+    }
 }
 
-const sum = (n) => {
+const sum = (x,n) => {
     let sum = 0;
     for(let i = 0; i <= n; i++) {
-        sum += Math.pow(x,2*i + 1);
+        sum += power(x,2*i + 1);
     }
     return sum;
 };
 
-// Invoke the function 
-let result = sum(n);
-if(result !== undefined) {
-    console.log("The result:",result);
+const main = function(x,n) {
+    try {
+        if(n < 0 || isNaN(n) || isNaN(x)) {
+            throw {"message":STR};
+        }
+        else {
+            return sum(x,n);
+        }        
+    } catch(e) {
+        console.log("Error:",e.message);
+    }
+}
+
+// Invoke the function
+let n = 5;
+let x = 2;
+if(main(x,n) !== undefined) {
+    console.log("The result:",main(x,n));
 }
