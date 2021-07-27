@@ -1,12 +1,27 @@
 'use strict'
-const ex10 = require("./Exercise10");
 
 const STR = "Invalid parameter";
+
+const power = function(x,n) {
+    let tmp = n;
+    let p = x;
+    for(let i = 2; i <= Math.abs(tmp); i++) {
+        p *= x;
+    }
+    // If exponent is positive (+)
+    if(n >= 0) {
+        return p;
+    }
+    else {
+        // If exponent is negative (-)
+        return 1/p;
+    }
+}
 
 const sum = (x,n) => {
     let sum = 0;
     for(let i = 1; i <= n; i++) {
-        sum += ex10(x,n);
+        sum += power(x,i);
     }
     return sum;
 };
@@ -26,7 +41,7 @@ const main = function(x,n) {
 
 // Invoke the function
 let n = 5;
-let x = 4;
+let x = 2;
 if(main(x,n) !== undefined) {
     console.log("The result:",main(x,n));
 }

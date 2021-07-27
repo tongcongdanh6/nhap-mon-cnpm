@@ -39,19 +39,3 @@ let x = 4;
 if(main(x,n) !== undefined) {
     console.log("The result:",main(x,n));
 }
-
-module.exports = function power(x,n) {
-    let tmp = n;
-    let p = x;
-    for(let i = 2; i <= Math.abs(tmp); i++) {
-        p *= x;
-    }
-    // If exponent is positive (+)
-    if(n >= 0) {
-        return p;
-    }
-    else {
-        // If exponent is negative (-)
-        return 1/p;
-    }
-}
