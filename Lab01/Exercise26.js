@@ -1,24 +1,21 @@
 'use strict'
 
-let prompt = require("prompt-sync")();
-const STR1 = "Please input number of elements in array: ";
-
 console.clear();
-let n = prompt(STR1);
+const findUniqueElements = (arr) => {
+    let duplicateElement = (arr) => arr.filter((value,index) => arr.indexOf(value) != index);
+    let uniqueElement = arr.filter((e) => !duplicateElement(arr).includes(e));
 
-// Validate data
-while(n <= 0 || isNaN(n)) {
-    console.log("Invalid value of element number in array! Please input again!");
-    n = prompt(STR1);
+    return uniqueElement;
 }
 
-// Input the value of element in array
-let arr = [];
-for(let i = 0; i < n; i++) {
-    arr[i] = parseInt(prompt(`Type the value of element ${i} = `));
+const main = (arr) => {
+    try {
+        console.log("The elements in array display only 1 times:",findUniqueElements(arr).join(" "));
+    }catch(e) {
+        console.log(e.message);
+    }
 }
 
-let duplicateElement = (arr) => arr.filter((value,index) => arr.indexOf(value) != index);
-let uniqueElement = arr.filter((e) => !duplicateElement(arr).includes(e));
-
-console.log("The elements in array display only 1 times:",uniqueElement.join(" "));
+// TEST CASE 
+let arr = [10, 20, 30, 20, 50, 10, 40];
+main(arr);

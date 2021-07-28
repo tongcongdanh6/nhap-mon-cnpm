@@ -1,16 +1,6 @@
 'use strict'
 
-let prompt = require("prompt-sync")();
-const STR1 = "Please input the step n > 0: ";
-
 console.clear();
-let n = prompt(STR1);
-
-// Validate data
-while(n <= 0 || isNaN(n)) {
-    console.log("Invalid value of step! Please input again!");
-    n = prompt(STR1);
-}
 
 function numWays(step) {
     // Fibonacci Series
@@ -24,4 +14,14 @@ function numWays(step) {
     }
 }
 
-console.log("Total way:",numWays(n));
+const main = (n) => {
+    try {
+        console.log("Total way:",numWays(n));
+    }catch(e) {
+        console.log(e.message);
+    }
+}
+
+//TEST CASE
+let n = 5;
+main(n);

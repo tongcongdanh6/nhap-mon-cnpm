@@ -1,12 +1,24 @@
 'use strict'
 
-let prompt = require("prompt-sync")();
-const STR1 = "Please input the string: ";
-
 console.clear();
-let string = prompt(STR1);
 
-let charArr = string.split('');
+const checkUniqueCharacterEachWord = (word) => {
+    let charArr = word.split('');
 
-let duplicate = (arr) => arr.filter((value,index) => arr.indexOf(value) != index);
-console.log("String contains unique character? Result -->",duplicate(charArr).length === 0);
+    let duplicate = (arr) => arr.filter((value,index) => arr.indexOf(value) != index);
+
+    return duplicate(charArr).length === 0;
+}
+
+const main = (word) => {
+    try {
+        console.log(`'${word}' contains unique character? Result -->`,checkUniqueCharacterEachWord(word));
+    }catch(e) {
+        console.log(e.message);
+    }
+}
+
+// TEST CASE
+let word = "Green";
+// let word = "Orange";
+main(word);
