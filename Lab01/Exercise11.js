@@ -32,7 +32,7 @@ const main = function(n) {
             throw {"message":STR};
         }
         else {
-            return sum(n);
+            console.log("The result:",sum(n));
         }        
     } catch(e) {
         console.log("Error:",e.message);
@@ -41,6 +41,4 @@ const main = function(n) {
 
 // Invoke the function
 let n = 5;
-if(main(n) !== undefined) {
-    console.log("The result:",main(n));
-}
+main(n);

@@ -1,5 +1,6 @@
 'use strict'
 
+console.clear();
 const STR = "Invalid parameter";
 
 const power = function(x,n) {
@@ -32,7 +33,7 @@ const main = function(x,n) {
             throw {"message":STR};
         }
         else {
-            return sum(x,n);
+            console.log("The result:",sum(x,n));
         }        
     } catch(e) {
         console.log("Error:",e.message);
@@ -42,6 +43,4 @@ const main = function(x,n) {
 // Invoke the function
 let n = 5;
 let x = 2;
-if(main(x,n) !== undefined) {
-    console.log("The result:",main(x,n));
-}
+main(x,n);

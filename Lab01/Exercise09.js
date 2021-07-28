@@ -18,7 +18,7 @@ const main = function(n) {
             throw {"message":STR};
         }
         else {
-            return product(n);
+            console.log("The result:",product(n));
         }        
     } catch(e) {
         console.log("Error:",e.message);
@@ -27,6 +27,4 @@ const main = function(n) {
 
 // Invoke the function
 let n = 7;
-if(main(n) !== undefined) {
-    console.log("The result:",main(n));
-}
+main(n);

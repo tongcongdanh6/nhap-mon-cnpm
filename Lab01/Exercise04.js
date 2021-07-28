@@ -1,5 +1,6 @@
 'use strict'
 
+console.clear();
 const STR = "n must be n > 9: ";
 
 function sum(n) {
@@ -16,7 +17,7 @@ const main = function(n) {
             throw {"message":STR};
         }
         else {
-            return sum(n);
+            console.log("The result:",sum(n));
         }        
     } catch(e) {
         console.log("Error:",e.message);
@@ -25,6 +26,4 @@ const main = function(n) {
 
 // Invoke the function
 let n = 10;
-if(main(n) !== undefined) {
-    console.log("The result:",main(n));
-}
+main(n);
